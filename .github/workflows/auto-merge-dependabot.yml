@@ -1,0 +1,18 @@
+name: Auto merge Dependabot updates
+
+on:
+    schedule:
+        - cron: "0 * * * *"
+
+jobs:
+  auto-merge:
+    name: Auto-merge dependabot minor and patch updates
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: koj-co/dependabot-pr-action@master
+        with:
+          approve: false
+          auto-label: true
+          merge-minor: true
+          merge-patch: true
+          token: ${{ secrets.GITHUB_TOKEN }}
